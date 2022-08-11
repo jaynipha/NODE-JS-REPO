@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jaynipha/NODE-JS-REPO#readme",
   "dependencies": {
     "nodemon": "^2.0.19",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "yargs": "^17.5.1"
   }
 }
