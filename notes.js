@@ -1,40 +1,43 @@
 const fs = require('fs');
-
 const getNotes = function getNotes(){
-
     return 'your notes . . .'
 }
+
 const addNotes = function(title, body){
  const notes = loadNotes();
 
  notes.push({
-    title:'title',
-    body:'body'
+    title:title,
+    body:body
  })
- console.log(notes);
-
+ 
+ saveNotes(notes);
 }
-saveNotes(notes);
 const saveNotes = function(notes){
- const dataJson = JSON.stringify(notes);
- fs.writeFileSync('notes.Json', dataJson);
+ const dataJSON = JSON.stringify(notes);
+ fs.writeFileSync("notes.json", dataJSON);
+ 
 }
+
     const loadNotes = function(){
+       
         try{
-            const dataBuffer = fs.readFileSync('notes.JSON');
-            const dataJson = dataBuffer.toString()
-            return JSON.parse(dataJson)
+            const dataBuffer = fs.readFileSync("notes.json");
+            const dataJSON = dataBuffer.toString()
+            return JSON.parse(dataJSON)
         }    
         catch (e) {
         return[]
        
         }
+        const notes =loadNotes();
+  
     }
+    
 
+    
 module.exports = {
-    getNotes : 'getNotes',
-    addNotes : 'addNotes'
+    getNotes : getNotes,
+    addNotes : addNotes
 }
 
-
-module.exports = getNotes;
