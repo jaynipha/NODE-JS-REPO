@@ -5,14 +5,38 @@ const getNotes = function getNotes(){
 
 const addNotes = function(title, body){
  const notes = loadNotes();
+ const duplicateNotes = notes.filter(function(notes)
+ {
+    return notes.title === title
+ })
+
+ if(duplicateNotes.length ===0){
 
  notes.push({
     title:title,
-    body:body
+    body:body,
  })
- 
  saveNotes(notes);
+ console.log('new note added')
+} else {
+    console.log ('note title taken')
 }
+}
+//remove notes
+const removeNote = function(title, body){
+    const notes = loadNotes()
+    const notesToKeep = notes.filter(function(notes){
+        return notes.title !== title
+    })
+    if(notes.length > notesToKeep){
+        console.log('notes removed')
+
+    }else {
+          console.log('no note found')
+    }
+saveNotes(notesToKeep);
+}
+
 const saveNotes = function(notes){
  const dataJSON = JSON.stringify(notes);
  fs.writeFileSync("notes.json", dataJSON);
@@ -38,6 +62,7 @@ const saveNotes = function(notes){
     
 module.exports = {
     getNotes : getNotes,
-    addNotes : addNotes
+    addNotes : addNotes,
+    removeNote: removeNote
 }
 
