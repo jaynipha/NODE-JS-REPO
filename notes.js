@@ -28,7 +28,7 @@ const removeNote = function(title, body){
     const notesToKeep = notes.filter(function(notes){
         return notes.title !== title
     })
-    if(notes.length > notesToKeep){
+    if(notes.length > notesToKeep.length){
         console.log('notes removed')
 
     }else {
