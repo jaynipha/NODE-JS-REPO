@@ -53,11 +53,22 @@ const saveNotes = (notes)=> {
   
     }
     
+//listing note function
+const listNotes = (title, body)=> {
+    const notes = loadNotes()
+    const listMyNotes = notes.forEach(notes=> {
+        console.log('these are my guests')
+        
+    });
+    
+}
 
+    
     
 module.exports = {
     getNotes : getNotes,
     addNotes : addNotes,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
 
